@@ -6,6 +6,7 @@ int main()
     {
     Bureaucrat b("rh", 1);
     Form form("Form1" , 10);
+    b.signForm(form);
     std::cout << form;
     }
     catch (const std::exception &e)
