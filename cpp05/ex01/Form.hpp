@@ -2,6 +2,7 @@
 #include "Bureaucrat.hpp"
 #ifndef FORM_HPP
 #define FORM_HPP
+
 class Bureaucrat;
 class Form{
 private :
@@ -9,18 +10,21 @@ private :
     bool _signed;
     const int _gradeTosign;
     const int _gradeToexecute;
-    Form();
 public :
+// Orthodox Canonical Form
+    Form();
     Form(const Form &other);
     Form(const std::string &name , int gradetosingn);
     ~Form();
     Form &operator=(const Form &other);
+// Getters Method
     const std::string getname() const;
     bool getsigned() const;
-    const int getgradetosign() const;
-    const int getgradetoexecute() const;
+     int getgradetosign() const;
+     int getgradetoexecute() const;
+// Besigned Member Function
     void beSigned(const Bureaucrat &bureaucrat);
-    //exception class
+//exception class
     class GradeTooHighException : public std::exception
     {
     public:

@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -9,7 +9,7 @@ int main(void)
 
     try
     {
-        Bureaucrat bureaucrat("ash", 2); // error with 200
+        Bureaucrat bureaucrat("ash", 138); // error with 200
         ShrubberyCreationForm form1("Shrubbery");
         RobotomyRequestForm form2("Robotomy");
         PresidentialPardonForm form3("President");

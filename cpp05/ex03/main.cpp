@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -10,9 +10,12 @@ int main(void)
 
     try
     {
+        Bureaucrat bur("bure1", 1);
         Intern someRandomIntern;
-        Form *rrf;
-        rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+        AForm *rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+        bur.signForm(*rrf);
+        bur.executeForm(*rrf);
+        delete rrf;
     }
     catch (std::exception &e)
     {

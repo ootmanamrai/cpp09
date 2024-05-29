@@ -13,22 +13,27 @@ Intern &Intern::operator=(const Intern &other){
 }
 
 
-Intern::~Intern(){}
+Intern::~Intern(){
+    std::cout << "Intern Destructor Called\n";
+}
 
-Form *Intern::makeForm(std::string Formname, std::string Targetname)
+AForm *Intern::makeForm(std::string Formname, std::string Targetname)
 {
     std::string Fname[] = { "presidential pardon", "robotomy request", "shrubbery creation" };
 
-    Form *forms[] = {new PresidentialPardonForm(Targetname) , new RobotomyRequestForm(Targetname), new ShrubberyCreationForm(Targetname)};
+    AForm *forms[] = {new PresidentialPardonForm(Targetname) , new RobotomyRequestForm(Targetname), new ShrubberyCreationForm(Targetname)};
 
     for(int i = 0; i < 3; i++)
     {
         if(Fname[i] == Formname)
         {
             std::cout << "Intern create " << Formname << std::endl;
+            for(int j = i + 1; j < 3; j++)
+                delete forms[j];
             return(forms[i]);
         }
+        delete forms[i];
     }
     std::cout << "form not found\n";
-    return nullptr;
+    return NULL;
 }

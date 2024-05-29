@@ -1,16 +1,18 @@
 #ifndef ROBOTOMYREQUESTFORM_HPP
 #define ROBOTOMYREQUESTFORM_HPP
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class RobotomyRequestForm : public Form {
+class RobotomyRequestForm : public AForm {
 private :
      std::string _target;
-    RobotomyRequestForm();
 public :
+//Orthodox Canonical Form 
+    RobotomyRequestForm();
     RobotomyRequestForm(const std::string &target);
     RobotomyRequestForm(const RobotomyRequestForm &other);
     RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
     ~RobotomyRequestForm(void);
+//Member Funnction
     void executed(Bureaucrat const &executor) const;
 };
 #endif

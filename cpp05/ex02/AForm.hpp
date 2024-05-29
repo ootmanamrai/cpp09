@@ -1,41 +1,47 @@
 #include <iostream>
 #include <fstream>
 #include "Bureaucrat.hpp"
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
+
 class Bureaucrat;
-class Form
+class AForm
 {
 private:
     const std::string _name;
     bool _signed;
     const int _gradeTosign;
     const int _gradeToexecute;
-    Form();
 
 public:
-    Form(const std::string& name, int gradetosign, int gradetoexecute);
-    Form(const Form &other);
-    ~Form();
-    Form &operator=(const Form &other);
+// Orthodox Canonical Form
+    AForm();
+    AForm(const std::string& name, int gradetosign, int gradetoexecute);
+    AForm(const AForm &other);
+    virtual ~AForm();
+    AForm &operator=(const AForm &other);
+// Getters Method
     const std::string getname() const;
     bool getsigned() const;
-    const int getgradetosign() const;
-    const int getgradetoexecute() const;
+    int getgradetosign() const;
+    int getgradetoexecute() const;
+// Besigned & Execute Member Function
     void beSigned(const Bureaucrat &bureaucrat);
     void execute(Bureaucrat const &executor) const;
-    virtual void executed(Bureaucrat const &executor) const;
-    // exception class
+    virtual void executed(Bureaucrat const &executor) const = 0;
+// exception class
     class GradeTooHighException : public std::exception
     {
     public:
         const char *what() const throw();
     };
+
     class GradeTooLowException : public std::exception
     {
     public:
         const char *what() const throw();
     };
+
     class UnsignedFormexception : public std::exception
     {
     public:
@@ -43,5 +49,5 @@ public:
     };
 };
 
-std::ostream &operator<<(std::ostream &o, const Form &ob);
+std::ostream &operator<<(std::ostream &o, const AForm &ob);
 #endif

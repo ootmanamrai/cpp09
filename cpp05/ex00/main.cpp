@@ -4,10 +4,18 @@ int main()
 {
     try
     {
-    Bureaucrat b("rh", 1);
+    Bureaucrat bur("rh", 3);
+    int i = 3;
+    while (--i)
+        bur.increment();
+    bur.decrement();
+    std::cout << bur;
+    std::cout << "copy test" << std::endl;
+    Bureaucrat b(bur);
     std::cout << b;
     }
-    catch (const Bureaucrat::GradeTooHighException &e)
+
+    catch (const std::exception &e)
     {
         std::cout << "catch exception:" << e.what() << std::endl;
     }
