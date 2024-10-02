@@ -1,10 +1,10 @@
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address -g3
 RM = rm -f
-FILES = main.cpp Span.cpp
+FILES = main.cpp 
 
 OBJ = $(FILES:.cpp=.o)
-NAME = span
+NAME = mstack
 
 all: $(NAME)
 

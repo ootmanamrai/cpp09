@@ -19,8 +19,8 @@ class Span {
      int  shortestSpan();
     int  longestSpan();
     Span(unsigned int nb);
-    template < typename T >
-	void	addRange(typename T::iterator begin, typename T::iterator end)
+    Span();
+	void	addRange(std::vector<int>::iterator begin,std::vector<int>::iterator end)
 	{
 		while (begin != end)
 		{
