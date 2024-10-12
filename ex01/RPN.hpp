@@ -7,15 +7,15 @@
 #include <stdexcept>
 #include <cstdlib> 
 
-class RPNCalculator {
+class RPN {
 private:
     std::stack<int> stack;
 
 public:
-    RPNCalculator(); 
-    ~RPNCalculator();
-
-    
+    RPN(); 
+    ~RPN();
+    RPN& operator=(RPN const & other);
+    RPN(RPN const & other);
     bool isOperator(const std::string &token) const;
     int evaluateRPN(const std::string &rpn);
 };

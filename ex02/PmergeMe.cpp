@@ -3,18 +3,32 @@
 #include <algorithm> 
 #include <cstdlib>
 #include <ctime> 
+#include <climits>
+#include <cerrno>
+
 
 std::vector<int> PmergeMe::parseInput(int argc, char* argv[]) {
     std::vector<int> numbers;
+
     for (int i = 1; i < argc; ++i) {
-        int value = atoi(argv[i]);
-        if (value <= 0) {
-            throw std::invalid_argument("All input numbers must be positive integers.");
+        char* endPtr; 
+        errno = 0; 
+
+        long value = strtol(argv[i], &endPtr, 10); 
+      
+        if (errno == ERANGE || *endPtr != '\0' || endPtr == argv[i]) {
+            throw std::invalid_argument("Invalid input: not a valid integer.");
         }
-        numbers.push_back(value);
+        if (value <= 0 || value > INT_MAX) {
+            throw std::invalid_argument("All input numbers must be positive integers within the range of int.");
+        }
+
+        numbers.push_back(static_cast<int>(value)); 
     }
+    
     return numbers;
 }
+
 
 std::vector<std::pair<int, int> > PmergeMe::pairAndSort(const std::vector<int>& numbers) {
     std::vector<std::pair<int, int> > pairs;
@@ -80,8 +94,8 @@ void PmergeMe::measureSortingTime(const std::vector<int>& numbers) {
     displayContainer(sortedVector, "After sorting with std::vector");
     displayContainer(sortedDeque, "After sorting with std::deque");
     
-    double timeVector = double(endVector - startVector) / CLOCKS_PER_SEC * 1e6; // microseconds
-    double timeDeque = double(endDeque - startDeque) / CLOCKS_PER_SEC * 1e6; // microseconds
+    double timeVector = double(endVector - startVector) / CLOCKS_PER_SEC * 1e6; 
+    double timeDeque = double(endDeque - startDeque) / CLOCKS_PER_SEC * 1e6;
     
     std::cout << "Time to process a range of " << numbers.size() << " elements with std::vector: " << timeVector << " us" << std::endl;
     std::cout << "Time to process a range of " << numbers.size() << " elements with std::deque: " << timeDeque << " us" << std::endl;

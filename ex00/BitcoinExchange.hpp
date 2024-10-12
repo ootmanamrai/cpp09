@@ -12,6 +12,10 @@ private:
     std::map<std::string, float> _database;
 
 public:
+    BitcoinExchange();
+    ~BitcoinExchange();
+    BitcoinExchange(const BitcoinExchange& other);
+    BitcoinExchange& operator=(const BitcoinExchange& other);
     void loadDatabase(const std::string& filename);
     bool isValidDate(const std::string& date) const;
     std::map<std::string, float>::const_iterator findClosestDate(const std::string& date) const;

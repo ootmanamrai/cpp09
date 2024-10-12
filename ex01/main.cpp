@@ -9,7 +9,7 @@ int main(int argc, char* argv[]) {
 
     try {
         std::string rpnExpression = argv[1];
-        RPNCalculator calculator;
+        RPN calculator;
         int result = calculator.evaluateRPN(rpnExpression);
         std::cout << "Result: " << result << std::endl;
     } catch (const std::exception &e) {

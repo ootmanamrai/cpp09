@@ -1,7 +1,7 @@
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address -g3
 RM = rm -f
-FILES = main.cpp 
+FILES = main.cpp BitcoinExchange.cpp
 
 OBJ = $(FILES:.cpp=.o)
 NAME = btc

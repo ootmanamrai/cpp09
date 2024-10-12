@@ -1,17 +1,26 @@
 #include "RPN.hpp"
 
+RPN::RPN() {}
 
+RPN::~RPN() {}
 
-RPNCalculator::RPNCalculator() {}
+RPN& RPN::operator=(const RPN& other) 
+{
+    if (this != &other)
+      this->stack = other.stack;
+    return *this;
+}
 
+RPN::RPN(RPN const & other) : stack(other.stack)
+{
 
-RPNCalculator::~RPNCalculator() {}
+}
 
-bool RPNCalculator::isOperator(const std::string &token) const {
+bool RPN::isOperator(const std::string &token) const {
     return token == "+" || token == "-" || token == "*" || token == "/";
 }
 
-int RPNCalculator::evaluateRPN(const std::string &rpn) {
+int RPN::evaluateRPN(const std::string &rpn) {
     std::istringstream iss(rpn);
     std::string token;
 
